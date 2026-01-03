@@ -11,11 +11,11 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
-public class GoogleSheetReader30Day {
+public class GoogleSheetReader365MidCapDay {
     private static final String APPLICATION_NAME = "stock-pet-project";
     private static final JacksonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
@@ -25,13 +25,13 @@ public class GoogleSheetReader30Day {
         String serviceAccountKeyPath = "D:\\Developement\\Sample Source Code\\1_Secreate_keys\\my-stocks-479704-4ae8d32ea2e8.json";
         String spreadsheetId = "1frDKWMorSwYhdfCy18uzlvvz7gnn1vAzWr8GH6A2fhE";
 
-        String range = "Nifty 500 - last 365days!A1:ID513";
+        String range = "Nifty Midcap!A1:IM150";
 
         LocalDate today = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d['st']['nd']['rd']['th'] MMM yyyy");
 
         String formattedDate = getDayWithSuffix(today.getDayOfMonth()) + " " + today.format(DateTimeFormatter.ofPattern("MMM yyyy"));
-        String outputFile = "Nifty 500 - last 365days " + formattedDate;
+        String outputFile = "Nifty Midcap - last 365days " + formattedDate;
 
         GoogleCredential credential = GoogleCredential
                 .fromStream(new FileInputStream(serviceAccountKeyPath))
